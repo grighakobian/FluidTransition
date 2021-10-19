@@ -1,0 +1,13 @@
+use_frameworks!
+
+platform :ios, '9.0'
+
+target 'FluidTransition_Example' do
+  pod 'FluidTransition', :path => '../'
+
+  target 'FluidTransition_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end

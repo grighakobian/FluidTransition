@@ -1,0 +1,6 @@
+framework module FluidTransition {
+  umbrella header "FluidTransition-umbrella.h"
+
+  export *
+  module * { export * }
+}

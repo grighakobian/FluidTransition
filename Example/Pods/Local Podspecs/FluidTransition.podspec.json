@@ -1,0 +1,22 @@
+{
+  "name": "FluidTransition",
+  "version": "0.1.0",
+  "summary": "A short description of FluidTransition.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/homanf/FluidTransition",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "homanf": "grighakobian@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/homanf/FluidTransition.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "FluidTransition/Classes/**/*"
+}

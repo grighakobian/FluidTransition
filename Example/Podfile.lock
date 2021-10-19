@@ -1,0 +1,16 @@
+PODS:
+  - FluidTransition (0.1.0)
+
+DEPENDENCIES:
+  - FluidTransition (from `../`)
+
+EXTERNAL SOURCES:
+  FluidTransition:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FluidTransition: e406be72d922e4dba1b366073cfb5a056d712337
+
+PODFILE CHECKSUM: 527c961c711c613cc0af397711eddb33033860d5
+
+COCOAPODS: 1.11.2
