@@ -15,6 +15,13 @@
 		B1B79F9EC16B26E3E5CC0792BCEA7EC4 /* Pods-FluidTransition_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A64E05C8FEAFC92C1034DD42500368F5 /* Pods-FluidTransition_Tests-dummy.m */; };
 		C19026DF342E7256BAAC256814FA8274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		D71F6339E2064752FA13BAB742A220FB /* FluidTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F514E3EFC27CCED8277CD63A562E4350 /* FluidTransition-dummy.m */; };
+		DDB72F2F272416A10036CE42 /* FluidPresentationAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB72F2E272416A10036CE42 /* FluidPresentationAnimator.swift */; };
+		DDB72F31272416B40036CE42 /* FluidDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB72F30272416B40036CE42 /* FluidDismissalAnimator.swift */; };
+		DDF4E913271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E90D271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift */; };
+		DDF4E914271F07A100D4E687 /* UISpringTimingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */; };
+		DDF4E916271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E910271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift */; };
+		DDF4E917271F07A100D4E687 /* FluidAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E911271F07A100D4E687 /* FluidAnimatedTransitioning.swift */; };
+		DDF4E918271F07A100D4E687 /* FluidPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E912271F07A100D4E687 /* FluidPresentationController.swift */; };
 		ED8221481D6C7024EC22F6F8C84AB71F /* Pods-FluidTransition_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B0DC9985F133776ADEB5408EE193DC /* Pods-FluidTransition_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -51,7 +58,7 @@
 		45671C6D7577F8A6AEF97E04F199173A /* FluidTransition-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FluidTransition-umbrella.h"; sourceTree = "<group>"; };
 		49101C92ED93A81C8F465B6B4E0C9D24 /* Pods-FluidTransition_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FluidTransition_Example-acknowledgements.plist"; sourceTree = "<group>"; };
 		5652F702F032CE206B77F7A483B4D66B /* Pods-FluidTransition_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FluidTransition_Tests.modulemap"; sourceTree = "<group>"; };
-		66A399B123AE394A0CC5C567AA16AE16 /* Pods-FluidTransition_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FluidTransition_Example"; path = Pods_FluidTransition_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		66A399B123AE394A0CC5C567AA16AE16 /* Pods_FluidTransition_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FluidTransition_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7232446604C857F0F4615A8A214A1C09 /* Pods-FluidTransition_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluidTransition_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		7B33481B88DE13D655B9DDCFE41928E2 /* Pods-FluidTransition_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FluidTransition_Example-dummy.m"; sourceTree = "<group>"; };
@@ -64,7 +71,14 @@
 		A64E05C8FEAFC92C1034DD42500368F5 /* Pods-FluidTransition_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FluidTransition_Tests-dummy.m"; sourceTree = "<group>"; };
 		D328AF702A0828836EAFCD7D14B2EEEE /* FluidTransition.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FluidTransition.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D5202D9B4B99D86AC96A69D8A67AAE97 /* Pods-FluidTransition_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FluidTransition_Example-frameworks.sh"; sourceTree = "<group>"; };
-		D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods-FluidTransition_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FluidTransition_Tests"; path = Pods_FluidTransition_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods_FluidTransition_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FluidTransition_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDB72F2E272416A10036CE42 /* FluidPresentationAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidPresentationAnimator.swift; sourceTree = "<group>"; };
+		DDB72F30272416B40036CE42 /* FluidDismissalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidDismissalAnimator.swift; sourceTree = "<group>"; };
+		DDF4E90D271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+FluidAnimatedTransitioning.swift"; path = "FluidTransition/Classes/UIViewController+FluidAnimatedTransitioning.swift"; sourceTree = "<group>"; };
+		DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISpringTimingParameters.swift; path = FluidTransition/Classes/UISpringTimingParameters.swift; sourceTree = "<group>"; };
+		DDF4E910271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+UIViewControllerTransitioningDelegate.swift"; path = "FluidTransition/Classes/UIViewController+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
+		DDF4E911271F07A100D4E687 /* FluidAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FluidAnimatedTransitioning.swift; path = FluidTransition/Classes/FluidAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		DDF4E912271F07A100D4E687 /* FluidPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FluidPresentationController.swift; path = FluidTransition/Classes/FluidPresentationController.swift; sourceTree = "<group>"; };
 		F514E3EFC27CCED8277CD63A562E4350 /* FluidTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FluidTransition-dummy.m"; sourceTree = "<group>"; };
 		F71D328358019CC4471C6992D4523D76 /* FluidTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FluidTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F33BBB6EBF210299AF99BD6568458 /* Pods-FluidTransition_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluidTransition_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -177,8 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				F71D328358019CC4471C6992D4523D76 /* FluidTransition.framework */,
-				66A399B123AE394A0CC5C567AA16AE16 /* Pods-FluidTransition_Example */,
-				D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods-FluidTransition_Tests */,
+				66A399B123AE394A0CC5C567AA16AE16 /* Pods_FluidTransition_Example.framework */,
+				D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods_FluidTransition_Tests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +227,13 @@
 		D94C5B1C13778C516B6B577AAAF48829 /* FluidTransition */ = {
 			isa = PBXGroup;
 			children = (
+				DDF4E911271F07A100D4E687 /* FluidAnimatedTransitioning.swift */,
+				DDB72F2E272416A10036CE42 /* FluidPresentationAnimator.swift */,
+				DDB72F30272416B40036CE42 /* FluidDismissalAnimator.swift */,
+				DDF4E912271F07A100D4E687 /* FluidPresentationController.swift */,
+				DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */,
+				DDF4E90D271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift */,
+				DDF4E910271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift */,
 				1725E0ECCBE2E54205E1DC9C78C4866F /* Pod */,
 				5B215C6B458638351B269D7FFBE54348 /* Support Files */,
 			);
@@ -284,7 +305,7 @@
 			);
 			name = "Pods-FluidTransition_Example";
 			productName = Pods_FluidTransition_Example;
-			productReference = 66A399B123AE394A0CC5C567AA16AE16 /* Pods-FluidTransition_Example */;
+			productReference = 66A399B123AE394A0CC5C567AA16AE16 /* Pods_FluidTransition_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9CD6675C3AB2035C826116C41DFB1A4B /* Pods-FluidTransition_Tests */ = {
@@ -303,7 +324,7 @@
 			);
 			name = "Pods-FluidTransition_Tests";
 			productName = Pods_FluidTransition_Tests;
-			productReference = D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods-FluidTransition_Tests */;
+			productReference = D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods_FluidTransition_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -313,7 +334,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1240;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
+				TargetAttributes = {
+					3A2370D8B3BE385B079401C3E6F4730B = {
+						LastSwiftMigration = 1250;
+					};
+				};
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -372,7 +398,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF4E913271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift in Sources */,
+				DDF4E914271F07A100D4E687 /* UISpringTimingParameters.swift in Sources */,
+				DDB72F31272416B40036CE42 /* FluidDismissalAnimator.swift in Sources */,
+				DDF4E918271F07A100D4E687 /* FluidPresentationController.swift in Sources */,
+				DDF4E917271F07A100D4E687 /* FluidAnimatedTransitioning.swift in Sources */,
+				DDB72F2F272416A10036CE42 /* FluidPresentationAnimator.swift in Sources */,
 				D71F6339E2064752FA13BAB742A220FB /* FluidTransition-dummy.m in Sources */,
+				DDF4E916271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +450,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FluidTransition_Example/Pods-FluidTransition_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FluidTransition_Example/Pods-FluidTransition_Example.modulemap";
@@ -488,7 +521,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -505,6 +538,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 1B743A330706294AFCF97AD524C03B54 /* FluidTransition.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -516,7 +550,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/FluidTransition/FluidTransition-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FluidTransition/FluidTransition-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FluidTransition/FluidTransition.modulemap";
 				PRODUCT_MODULE_NAME = FluidTransition;
@@ -525,7 +559,7 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -548,7 +582,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FluidTransition_Tests/Pods-FluidTransition_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FluidTransition_Tests/Pods-FluidTransition_Tests.modulemap";
@@ -581,7 +615,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FluidTransition_Tests/Pods-FluidTransition_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FluidTransition_Tests/Pods-FluidTransition_Tests.modulemap";
@@ -648,7 +682,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -663,6 +697,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8439ADC89C4330C9193D4957176D176C /* FluidTransition.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -674,7 +709,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/FluidTransition/FluidTransition-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/FluidTransition/FluidTransition-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/FluidTransition/FluidTransition.modulemap";
 				PRODUCT_MODULE_NAME = FluidTransition;
@@ -683,7 +718,8 @@
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.0;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -705,7 +741,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FluidTransition_Example/Pods-FluidTransition_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FluidTransition_Example/Pods-FluidTransition_Example.modulemap";
