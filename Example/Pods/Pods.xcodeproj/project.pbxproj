@@ -15,6 +15,7 @@
 		B1B79F9EC16B26E3E5CC0792BCEA7EC4 /* Pods-FluidTransition_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A64E05C8FEAFC92C1034DD42500368F5 /* Pods-FluidTransition_Tests-dummy.m */; };
 		C19026DF342E7256BAAC256814FA8274 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 		D71F6339E2064752FA13BAB742A220FB /* FluidTransition-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F514E3EFC27CCED8277CD63A562E4350 /* FluidTransition-dummy.m */; };
+		DDF4E914271F07A100D4E687 /* UISpringTimingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */; };
 		ED8221481D6C7024EC22F6F8C84AB71F /* Pods-FluidTransition_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B0DC9985F133776ADEB5408EE193DC /* Pods-FluidTransition_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		D328AF702A0828836EAFCD7D14B2EEEE /* FluidTransition.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FluidTransition.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		D5202D9B4B99D86AC96A69D8A67AAE97 /* Pods-FluidTransition_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FluidTransition_Example-frameworks.sh"; sourceTree = "<group>"; };
 		D8C422D3AFA3BC85BC28C8A01F898FA4 /* Pods-FluidTransition_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FluidTransition_Tests"; path = Pods_FluidTransition_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISpringTimingParameters.swift; path = FluidTransition/Classes/UISpringTimingParameters.swift; sourceTree = "<group>"; };
 		F514E3EFC27CCED8277CD63A562E4350 /* FluidTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FluidTransition-dummy.m"; sourceTree = "<group>"; };
 		F71D328358019CC4471C6992D4523D76 /* FluidTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FluidTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F33BBB6EBF210299AF99BD6568458 /* Pods-FluidTransition_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluidTransition_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 		D94C5B1C13778C516B6B577AAAF48829 /* FluidTransition */ = {
 			isa = PBXGroup;
 			children = (
+				DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */,
 				1725E0ECCBE2E54205E1DC9C78C4866F /* Pod */,
 				5B215C6B458638351B269D7FFBE54348 /* Support Files */,
 			);
@@ -372,6 +375,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDF4E914271F07A100D4E687 /* UISpringTimingParameters.swift in Sources */,
 				D71F6339E2064752FA13BAB742A220FB /* FluidTransition-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
