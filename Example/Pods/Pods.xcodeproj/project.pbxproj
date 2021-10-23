@@ -19,7 +19,9 @@
 		DDB72F31272416B40036CE42 /* FluidDismissalAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB72F30272416B40036CE42 /* FluidDismissalAnimator.swift */; };
 		DDF4E913271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E90D271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift */; };
 		DDF4E914271F07A100D4E687 /* UISpringTimingParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */; };
+		DDF4E916271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E910271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift */; };
 		DDF4E917271F07A100D4E687 /* FluidAnimatedTransitioning.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E911271F07A100D4E687 /* FluidAnimatedTransitioning.swift */; };
+		DDF4E918271F07A100D4E687 /* FluidPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF4E912271F07A100D4E687 /* FluidPresentationController.swift */; };
 		ED8221481D6C7024EC22F6F8C84AB71F /* Pods-FluidTransition_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 29B0DC9985F133776ADEB5408EE193DC /* Pods-FluidTransition_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -74,7 +76,9 @@
 		DDB72F30272416B40036CE42 /* FluidDismissalAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FluidDismissalAnimator.swift; sourceTree = "<group>"; };
 		DDF4E90D271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+FluidAnimatedTransitioning.swift"; path = "FluidTransition/Classes/UIViewController+FluidAnimatedTransitioning.swift"; sourceTree = "<group>"; };
 		DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UISpringTimingParameters.swift; path = FluidTransition/Classes/UISpringTimingParameters.swift; sourceTree = "<group>"; };
+		DDF4E910271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+UIViewControllerTransitioningDelegate.swift"; path = "FluidTransition/Classes/UIViewController+UIViewControllerTransitioningDelegate.swift"; sourceTree = "<group>"; };
 		DDF4E911271F07A100D4E687 /* FluidAnimatedTransitioning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FluidAnimatedTransitioning.swift; path = FluidTransition/Classes/FluidAnimatedTransitioning.swift; sourceTree = "<group>"; };
+		DDF4E912271F07A100D4E687 /* FluidPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FluidPresentationController.swift; path = FluidTransition/Classes/FluidPresentationController.swift; sourceTree = "<group>"; };
 		F514E3EFC27CCED8277CD63A562E4350 /* FluidTransition-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FluidTransition-dummy.m"; sourceTree = "<group>"; };
 		F71D328358019CC4471C6992D4523D76 /* FluidTransition.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FluidTransition.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB3F33BBB6EBF210299AF99BD6568458 /* Pods-FluidTransition_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FluidTransition_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -226,8 +230,10 @@
 				DDF4E911271F07A100D4E687 /* FluidAnimatedTransitioning.swift */,
 				DDB72F2E272416A10036CE42 /* FluidPresentationAnimator.swift */,
 				DDB72F30272416B40036CE42 /* FluidDismissalAnimator.swift */,
+				DDF4E912271F07A100D4E687 /* FluidPresentationController.swift */,
 				DDF4E90E271F07A100D4E687 /* UISpringTimingParameters.swift */,
 				DDF4E90D271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift */,
+				DDF4E910271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift */,
 				1725E0ECCBE2E54205E1DC9C78C4866F /* Pod */,
 				5B215C6B458638351B269D7FFBE54348 /* Support Files */,
 			);
@@ -395,9 +401,11 @@
 				DDF4E913271F07A100D4E687 /* UIViewController+FluidAnimatedTransitioning.swift in Sources */,
 				DDF4E914271F07A100D4E687 /* UISpringTimingParameters.swift in Sources */,
 				DDB72F31272416B40036CE42 /* FluidDismissalAnimator.swift in Sources */,
+				DDF4E918271F07A100D4E687 /* FluidPresentationController.swift in Sources */,
 				DDF4E917271F07A100D4E687 /* FluidAnimatedTransitioning.swift in Sources */,
 				DDB72F2F272416A10036CE42 /* FluidPresentationAnimator.swift in Sources */,
 				D71F6339E2064752FA13BAB742A220FB /* FluidTransition-dummy.m in Sources */,
+				DDF4E916271F07A100D4E687 /* UIViewController+UIViewControllerTransitioningDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
