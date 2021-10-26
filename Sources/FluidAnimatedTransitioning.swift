@@ -21,11 +21,13 @@
 import UIKit
 
 
-public protocol FluidAnimatedTransitioning {
+public protocol FluidAnimatedTransitioning: AnyObject {
     
+    /// The offset between the top of the screen safe area and the top of the container view.
+    /// Default value is 20.0.
     var topOffset: CGFloat { get }
     
-    /// The style of the container view background
+    /// The style of the container view background.
     var backgroundStyle: BackgroundStyle { get }
 }
 
@@ -33,11 +35,14 @@ public protocol FluidAnimatedTransitioning {
 public extension FluidAnimatedTransitioning where Self: UIViewController {
     
     var topOffset: CGFloat {
-        return 60.0
+        return 20.0
     }
     
     var backgroundStyle: BackgroundStyle {
         return .solid(color: UIColor(white: 0, alpha: 0.5))
     }
     
+    var dismissOnBackgroundTap: Bool {
+        return true
+    }
 }
