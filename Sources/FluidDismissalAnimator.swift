@@ -39,20 +39,19 @@ open class FluidDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioni
     open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromViewController = transitionContext.viewController(forKey: .from) as? FluidViewController,
               let toViewController = transitionContext.viewController(forKey: .to),
+              let presentationController = fromViewController.presentationController as? FluidPresentationController,
               let fromView = transitionContext.view(forKey: .from) else {
             return
         }
         
         toViewController.beginAppearanceTransition(true, animated: true)
         
-        let containerView = transitionContext.containerView
-        let backgroundColor = fromViewController.containerViewBackgroundColor
         let screenHeight = UIScreen.main.bounds.size.height
         let transform = CGAffineTransform(translationX: 0, y: screenHeight)
         
         dismissalAnimator.addAnimations {
             fromView.transform = transform
-            containerView.backgroundColor = backgroundColor.withAlphaComponent(0.0)
+            presentationController.backgroundView.alpha = 0.0
         }
       
         dismissalAnimator.addCompletion { position in

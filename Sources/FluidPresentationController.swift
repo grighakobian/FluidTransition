@@ -23,7 +23,22 @@ import UIKit
 
 open class FluidPresentationController: UIPresentationController {
     
-    public private(set) var panGestureRecognizer = UIPanGestureRecognizer()
+    private(set) var panGestureRecognizer = UIPanGestureRecognizer()
+    private(set) var backgroundView: BackgroundView!
+    
+    open override func presentationTransitionWillBegin() {
+        super.presentationTransitionWillBegin()
+        
+        guard let containerView = containerView,
+              let fluidViewController = presentedViewController as? FluidViewController else {
+            return
+        }
+        
+        containerView.backgroundColor = .clear
+        let backgroundStyle = fluidViewController.backgroundStyle
+        backgroundView = BackgroundView(style: backgroundStyle)
+        backgroundView.fill(in: containerView)
+    }
     
     open override func presentationTransitionDidEnd(_ completed: Bool) {
         super.presentationTransitionDidEnd(completed)
@@ -75,11 +90,7 @@ open class FluidPresentationController: UIPresentationController {
             let currentOffset = transform.ty
             let progress = preferredContentHeight / currentOffset
             let alpha = min(max(0.0, progress), 1)
-
-            print("alpha: \(alpha)")
-
-            let backgroundColor = fluidViewController.containerViewBackgroundColor
-            containerView.backgroundColor = backgroundColor.withAlphaComponent(alpha*0.3)
+            backgroundView.alpha = alpha
             
         case .ended, .cancelled:
             

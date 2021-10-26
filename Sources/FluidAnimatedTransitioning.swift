@@ -25,8 +25,8 @@ public protocol FluidAnimatedTransitioning {
     
     var topOffset: CGFloat { get }
     
-    var containerViewBackgroundColor: UIColor { get }
-    
+    /// The style of the container view background
+    var backgroundStyle: BackgroundStyle { get }
 }
 
 
@@ -36,8 +36,8 @@ public extension FluidAnimatedTransitioning where Self: UIViewController {
         return 60.0
     }
     
-    var containerViewBackgroundColor: UIColor {
-        return UIColor.black.withAlphaComponent(0.5)
+    var backgroundStyle: BackgroundStyle {
+        return .solid(color: UIColor(white: 0, alpha: 0.5))
     }
     
 }
