@@ -18,36 +18,46 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
+
 import UIKit
 
-final class RootViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+/// Style of background.
+///
+/// - solid: A solid color background.
+/// - blur: A blurred background with a defined style.
+public enum BackgroundStyle {
+    case solid(color: UIColor)
+    case blur(style: UIBlurEffect.Style)
+}
 
-        configureView()
-        configureNavigationItem()
+
+/// A view that displays a specified background style.
+final class BackgroundView: UIView {
+    
+    /// Initializes a new background view with a defined background style
+    /// - Parameter style: The background style
+    init(style: BackgroundStyle) {
+        super.init(frame: .zero)
+        super.backgroundColor = .clear
+        
+        let backgroundView = view(for: style)
+        backgroundView.fill(in: self)
     }
     
-    @objc private func add(_ sender: UIBarButtonItem) {
-        let viewController = FluidViewController()
-        navigationController?.fluid_present(viewController, animated: true)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("Use init(style:)")
     }
     
-    private func configureView() {
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = UIColor.systemBlue
-        } else {
-            view.backgroundColor = UIColor.white
+    func view(for style: BackgroundStyle) -> UIView {
+        switch style {
+        case .solid(let color):
+            let view = UIView()
+            view.backgroundColor = color
+            return view
+        case .blur(let style):
+            let effect = UIBlurEffect(style: style)
+            return UIVisualEffectView(effect: effect)
         }
-    }
-    
-    private func configureNavigationItem() {
-        let barButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(add(_:))
-        )
-        navigationItem.rightBarButtonItem = barButtonItem
     }
 }

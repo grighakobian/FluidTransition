@@ -38,6 +38,7 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
     open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         guard let fromViewController = transitionContext.viewController(forKey: .from),
               let toViewController = transitionContext.viewController(forKey: .to) as? FluidViewController,
+              let presentationController = toViewController.presentationController as? FluidPresentationController,
               let presentationView = transitionContext.view(forKey: .to) else {
             return
         }
@@ -48,17 +49,15 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         
         let screenHeight = UIScreen.main.bounds.size.height
         presentationView.transform = CGAffineTransform(translationX: 0, y: screenHeight)
-        
-        let backgroundColor = toViewController.containerViewBackgroundColor
-        
+ 
         containerView.addSubview(presentationView)
-        containerView.backgroundColor = backgroundColor.withAlphaComponent(0.0)
-        
+        presentationController.backgroundView.alpha = 0.0
+
         let preferredContentHeight = toViewController.preferredContentSize.height
         
         presentationAnimator.addAnimations {
             presentationView.transform = CGAffineTransform(translationX: 0, y: preferredContentHeight)
-            containerView.backgroundColor = backgroundColor
+            presentationController.backgroundView.alpha = 1.0
         }
                
         presentationAnimator.addCompletion { position in

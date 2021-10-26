@@ -18,36 +18,20 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
+
 import UIKit
 
-final class RootViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configureView()
-        configureNavigationItem()
-    }
+extension UIView {
     
-    @objc private func add(_ sender: UIBarButtonItem) {
-        let viewController = FluidViewController()
-        navigationController?.fluid_present(viewController, animated: true)
-    }
-    
-    private func configureView() {
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = UIColor.systemBlue
-        } else {
-            view.backgroundColor = UIColor.white
-        }
-    }
-    
-    private func configureNavigationItem() {
-        let barButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(add(_:))
-        )
-        navigationItem.rightBarButtonItem = barButtonItem
+    func fill(in superview: UIView) {
+        superview.addSubview(self)
+        translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: superview.leadingAnchor),
+            topAnchor.constraint(equalTo: superview.topAnchor),
+            trailingAnchor.constraint(equalTo: superview.trailingAnchor),
+            bottomAnchor.constraint(equalTo: superview.bottomAnchor)
+        ])
     }
 }
