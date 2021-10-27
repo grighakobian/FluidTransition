@@ -22,13 +22,18 @@ import UIKit
 
 
 public protocol FluidAnimatedTransitioning: AnyObject {
-    
     /// The offset between the top of the screen safe area and the top of the container view.
     /// Default value is 20.0.
     var topOffset: CGFloat { get }
     
+    /// The preferred size for the view controller’s view.
+    var preferredContentSize: CGSize { get set }
+    
     /// The style of the container view background.
     var backgroundStyle: BackgroundStyle { get }
+    
+    /// Indicates if the presented controller can be dismissed on background tap.
+    var dismissOnBackgroundTap: Bool { get }
 }
 
 
