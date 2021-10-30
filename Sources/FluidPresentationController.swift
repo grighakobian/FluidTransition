@@ -78,15 +78,17 @@ open class FluidPresentationController: UIPresentationController {
             let translation = recognizer.translation(in: containerView)
             var transform = initialTransform.translatedBy(x: 0, y: translation.y)
             
-            let safeAreaInsets = presentedView.safeAreaInsets
+            let safeAreaInsets = presentedView.window?.safeAreaInsets ?? .zero
             let topOffset = fluidViewController.topOffset + safeAreaInsets.top
             transform.ty = max(transform.ty, topOffset)
             presentedView.transform = transform
             
+            let containerHeight = containerView.bounds.height
             let preferredContentHeight = fluidViewController.preferredContentSize.height
+            let verticalTransform = containerHeight - preferredContentHeight
             
             let currentOffset = transform.ty
-            let progress = preferredContentHeight / currentOffset
+            let progress = verticalTransform / currentOffset
             let alpha = min(max(0.0, progress), 1)
             backgroundView.alpha = alpha
             
@@ -100,8 +102,10 @@ open class FluidPresentationController: UIPresentationController {
             animator.addAnimations {
                 presentedView.isUserInteractionEnabled = !shouldDismiss
                 if (shouldDismiss == false) {
-                    let translationY = self.fluidViewController.preferredContentSize.height
-                    let transform = CGAffineTransform(translationX: 0, y: translationY)
+                    let containerHeight = containerView.bounds.height
+                    let preferredContentHeight = self.fluidViewController.preferredContentSize.height
+                    let verticalTransform = containerHeight - preferredContentHeight
+                    let transform = CGAffineTransform(translationX: 0, y: verticalTransform)
                     presentedView.transform = transform
                 }
             }
