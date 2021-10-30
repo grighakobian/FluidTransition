@@ -24,11 +24,24 @@ import UIKit
 public protocol FluidAnimatedTransitioning: AnyObject {
     
     /// The offset between the top of the screen safe area and the top of the container view.
-    /// Default value is 20.0.
+    ///
+    /// The default value of the property is 20.0.
     var topOffset: CGFloat { get }
     
     /// The style of the container view background.
+    ///
+    /// The default value of the property is black color with 0.5 opacity.
     var backgroundStyle: BackgroundStyle { get }
+
+    /// Indicates whtere the presented view can be dismissed via background tap.
+    ///
+    /// The default value of the property is `true`
+    var dismissOnBackgroundTap: Bool { get }
+    
+    /// The corner radius of the presented view
+    ///
+    /// If set, the presented view top corners should be rounded.
+    var cornerRadius: CGFloat? { get }
 }
 
 
@@ -44,5 +57,9 @@ public extension FluidAnimatedTransitioning where Self: UIViewController {
     
     var dismissOnBackgroundTap: Bool {
         return true
+    }
+    
+    var cornerRadius: CGFloat? {
+        return nil
     }
 }
