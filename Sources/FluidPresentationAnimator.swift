@@ -60,9 +60,10 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         presentationController.backgroundView.alpha = 0.0
 
         let preferredContentHeight = toViewController.preferredContentSize.height
+        let verticalTransform = screenHeight - preferredContentHeight
         
         presentationAnimator.addAnimations {
-            presentationView.transform = CGAffineTransform(translationX: 0, y: preferredContentHeight)
+            presentationView.transform = CGAffineTransform(translationX: 0, y: verticalTransform)
             presentationController.backgroundView.alpha = 1.0
         }
         

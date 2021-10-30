@@ -22,11 +22,13 @@ import UIKit
 
 
 public protocol FluidAnimatedTransitioning: AnyObject {
-    
     /// The offset between the top of the screen safe area and the top of the container view.
     ///
     /// The default value of the property is 20.0.
     var topOffset: CGFloat { get }
+    
+    /// The preferred size for the view controller’s view.
+    var preferredContentSize: CGSize { get set }
     
     /// The style of the container view background.
     ///
@@ -42,6 +44,7 @@ public protocol FluidAnimatedTransitioning: AnyObject {
     ///
     /// If set, the presented view top corners should be rounded.
     var cornerRadius: CGFloat? { get }
+    
 }
 
 
