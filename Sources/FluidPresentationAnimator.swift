@@ -51,6 +51,12 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         presentationView.transform = CGAffineTransform(translationX: 0, y: screenHeight)
  
         containerView.addSubview(presentationView)
+        
+        if let cornerRadius = toViewController.cornerRadius {
+            presentationView.layer.cornerRadius = cornerRadius
+            presentationView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        }
+        
         presentationController.backgroundView.alpha = 0.0
 
         let preferredContentHeight = toViewController.preferredContentSize.height
@@ -60,7 +66,7 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
             presentationView.transform = CGAffineTransform(translationX: 0, y: verticalTransform)
             presentationController.backgroundView.alpha = 1.0
         }
-               
+        
         presentationAnimator.addCompletion { position in
             switch position {
             case .end:

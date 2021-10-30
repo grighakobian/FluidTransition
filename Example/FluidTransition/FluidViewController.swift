@@ -37,8 +37,6 @@ final class FluidViewController: UIViewController {
     
     private func configureView() {
         view.backgroundColor = .systemPink
-        view.layer.cornerRadius = 25
-        view.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         view.clipsToBounds = true
     }
 }
@@ -46,5 +44,11 @@ final class FluidViewController: UIViewController {
 
 // MARK: - FluidTransitioning
 
-extension FluidViewController: FluidAnimatedTransitioning {}
+extension FluidViewController: FluidAnimatedTransitioning {
+    
+    var cornerRadius: CGFloat? {
+        return 20.0
+    }
+    
+}
 
