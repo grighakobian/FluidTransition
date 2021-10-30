@@ -33,20 +33,21 @@ open class FluidPresentationController: UIPresentationController {
     
     open override func presentationTransitionWillBegin() {
         super.presentationTransitionWillBegin()
+        
         guard let containerView = containerView else { return }
         
-        // Configure background view
+        /// Configure background view
         containerView.backgroundColor = .clear
         let backgroundStyle = fluidViewController.backgroundStyle
         self.backgroundView = BackgroundView(style: backgroundStyle)
         backgroundView.fill(in: containerView)
         
-        // Add pan gesture recognizer for interactive transition
-        panGestureRecognizer.addTarget(self, action: #selector(panned))
+        /// Add a pan gesture recognizer for interactive transition
+        panGestureRecognizer.addTarget(self, action: #selector(panned(_:)))
         panGestureRecognizer.cancelsTouchesInView = false
         containerView.addGestureRecognizer(panGestureRecognizer)
         
-        // Add tap gesture recognizer for top to dismiss
+        /// Add a tap gesture recognizer for top to dismiss
         tapGestureRecognizer.addTarget(self, action: #selector(tapped(_:)))
         tapGestureRecognizer.cancelsTouchesInView = false
         containerView.addGestureRecognizer(tapGestureRecognizer)
@@ -56,14 +57,13 @@ open class FluidPresentationController: UIPresentationController {
         guard fluidViewController.dismissOnBackgroundTap else {
             return
         }
-        
         let location = sender.location(in: containerView)
         if presentedView?.frame.contains(location) == false {
             presentedViewController.dismiss(animated: true)
         }
     }
     
-    @objc open func panned(recognizer: UIPanGestureRecognizer) {
+    @objc open func panned(_ recognizer: UIPanGestureRecognizer) {
         guard let containerView = containerView,
               let presentedView = presentedView else {
             return
@@ -78,15 +78,17 @@ open class FluidPresentationController: UIPresentationController {
             let translation = recognizer.translation(in: containerView)
             var transform = initialTransform.translatedBy(x: 0, y: translation.y)
             
-            let safeAreaInsets = presentedView.safeAreaInsets
+            let safeAreaInsets = presentedView.window?.safeAreaInsets ?? .zero
             let topOffset = fluidViewController.topOffset + safeAreaInsets.top
             transform.ty = max(transform.ty, topOffset)
             presentedView.transform = transform
             
+            let containerHeight = containerView.bounds.height
             let preferredContentHeight = fluidViewController.preferredContentSize.height
+            let verticalTransform = containerHeight - preferredContentHeight
             
             let currentOffset = transform.ty
-            let progress = preferredContentHeight / currentOffset
+            let progress = verticalTransform / currentOffset
             let alpha = min(max(0.0, progress), 1)
             backgroundView.alpha = alpha
             
@@ -100,8 +102,10 @@ open class FluidPresentationController: UIPresentationController {
             animator.addAnimations {
                 presentedView.isUserInteractionEnabled = !shouldDismiss
                 if (shouldDismiss == false) {
-                    let translationY = self.fluidViewController.preferredContentSize.height
-                    let transform = CGAffineTransform(translationX: 0, y: translationY)
+                    let containerHeight = containerView.bounds.height
+                    let preferredContentHeight = self.fluidViewController.preferredContentSize.height
+                    let verticalTransform = containerHeight - preferredContentHeight
+                    let transform = CGAffineTransform(translationX: 0, y: verticalTransform)
                     presentedView.transform = transform
                 }
             }
