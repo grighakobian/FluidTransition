@@ -36,8 +36,7 @@ final class FluidViewController: UIViewController {
     }
     
     private func configureView() {
-        view.backgroundColor = .systemPink
-        view.clipsToBounds = true
+        view.backgroundColor = .systemBlue
     }
 }
 
@@ -50,5 +49,22 @@ extension FluidViewController: FluidAnimatedTransitioning {
         return 20.0
     }
     
+    var dragIndicatorStyle: DragIndicatorStyle? {
+        if #available(iOS 13.0, *) {
+            return DragIndicatorStyle(
+                backgroundStyle: .blur(style: .systemMaterial),
+                topInset: -16,
+                indicatorSize: CGSize(width: 50, height: 6),
+                cornerRadius: 3
+            )
+        } else {
+            return DragIndicatorStyle(
+                backgroundStyle: .blur(style: .extraLight),
+                topInset: -16,
+                indicatorSize: CGSize(width: 50, height: 6),
+                cornerRadius: 3
+            )
+        }
+    }
 }
 
