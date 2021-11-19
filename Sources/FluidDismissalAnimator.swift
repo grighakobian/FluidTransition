@@ -23,17 +23,17 @@ import UIKit
 
 open class FluidDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    public let dismissalAnimator: UIViewPropertyAnimator
+    public let animator: UIViewPropertyAnimator
     
     public override init() {
         let springTimingParameters = UISpringTimingParameters(damping: 1.0, response: 0.3)
-        self.dismissalAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
+        self.animator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
         
         super.init()
     }
     
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return dismissalAnimator.duration
+        return animator.duration
     }
     
     open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -46,26 +46,32 @@ open class FluidDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioni
         
         toViewController.beginAppearanceTransition(true, animated: true)
         
-        let screenHeight = UIScreen.main.bounds.size.height
-        let transform = CGAffineTransform(translationX: 0, y: screenHeight)
+        var verticalTransform = UIScreen.main.bounds.size.height
+        if let dragIndicatorStyle = fromViewController.dragIndicatorStyle {
+            if dragIndicatorStyle.topInset.isLess(than: 0.0) {
+                verticalTransform += dragIndicatorStyle.indicatorSize.height
+                verticalTransform += abs(dragIndicatorStyle.topInset)
+            }
+        }
         
-        dismissalAnimator.addAnimations {
+        let transform = CGAffineTransform(translationX: 0, y: verticalTransform)
+        let indicatorView = fromViewController.view.subviews.filter({ $0 is DragIndicatorView }).first
+        
+        animator.addAnimations {
             fromView.transform = transform
             presentationController.backgroundView.alpha = 0.0
+            indicatorView?.alpha = 0.0
         }
       
-        dismissalAnimator.addCompletion { position in
-            switch position {
-            case .end:
+        animator.addCompletion { position in
+            if position == UIViewAnimatingPosition.end {
                 fromView.removeFromSuperview()
                 toViewController.endAppearanceTransition()
                 let didComplete = !transitionContext.transitionWasCancelled
                 transitionContext.completeTransition(didComplete)
-            default:
-                break
             }
         }
        
-        dismissalAnimator.startAnimation()
+        animator.startAnimation()
     }
 }

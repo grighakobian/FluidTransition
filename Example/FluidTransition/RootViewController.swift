@@ -36,7 +36,7 @@ final class RootViewController: UIViewController {
     
     private func configureView() {
         if #available(iOS 13.0, *) {
-            view.backgroundColor = UIColor.systemBlue
+            view.backgroundColor = UIColor.systemBackground
         } else {
             view.backgroundColor = UIColor.white
         }
