@@ -85,8 +85,13 @@ open class FluidPresentationController: UIPresentationController {
             
             let containerHeight = containerView.bounds.height
             let preferredContentHeight = fluidViewController.preferredContentSize.height
-            let verticalTransform = containerHeight - preferredContentHeight
-            
+            var verticalTransform = containerHeight - preferredContentHeight
+            if let dragIndicatorStyle = fluidViewController.dragIndicatorStyle {
+                if dragIndicatorStyle.topInset.isLess(than: 0.0) {
+                    verticalTransform += dragIndicatorStyle.indicatorSize.height
+                    verticalTransform += abs(dragIndicatorStyle.topInset)
+                }
+            }
             let currentOffset = transform.ty
             let progress = verticalTransform / currentOffset
             let alpha = min(max(0.0, progress), 1)
@@ -104,14 +109,20 @@ open class FluidPresentationController: UIPresentationController {
                 if (shouldDismiss == false) {
                     let containerHeight = containerView.bounds.height
                     let preferredContentHeight = self.fluidViewController.preferredContentSize.height
-                    let verticalTransform = containerHeight - preferredContentHeight
+                    var verticalTransform = containerHeight - preferredContentHeight
+                    if let dragIndicatorStyle = self.fluidViewController.dragIndicatorStyle {
+                        if dragIndicatorStyle.topInset.isLess(than: 0.0) {
+                            verticalTransform += dragIndicatorStyle.indicatorSize.height
+                            verticalTransform += abs(dragIndicatorStyle.topInset)
+                        }
+                    }
                     let transform = CGAffineTransform(translationX: 0, y: verticalTransform)
                     presentedView.transform = transform
                 }
             }
             
             animator.addCompletion { position in
-                if (position == .end) && shouldDismiss {
+                if (position == UIViewAnimatingPosition.end) && shouldDismiss {
                     self.fluidViewController.dismiss(animated: true)
                 }
             }

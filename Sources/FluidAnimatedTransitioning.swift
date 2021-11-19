@@ -45,6 +45,8 @@ public protocol FluidAnimatedTransitioning: AnyObject {
     /// If set, the presented view top corners should be rounded.
     var cornerRadius: CGFloat? { get }
     
+    /// The style of the presented view drag indicator.
+    var dragIndicatorStyle: DragIndicatorStyle? { get }
 }
 
 
@@ -55,7 +57,7 @@ public extension FluidAnimatedTransitioning where Self: UIViewController {
     }
     
     var backgroundStyle: BackgroundStyle {
-        return .solid(color: UIColor(white: 0, alpha: 0.5))
+        return .solid(color: UIColor(white: 0, alpha: 0.3))
     }
     
     var dismissOnBackgroundTap: Bool {
@@ -63,6 +65,10 @@ public extension FluidAnimatedTransitioning where Self: UIViewController {
     }
     
     var cornerRadius: CGFloat? {
+        return nil
+    }
+    
+    var dragIndicatorStyle: DragIndicatorStyle? {
         return nil
     }
 }

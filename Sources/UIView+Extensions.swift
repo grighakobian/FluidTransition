@@ -24,9 +24,8 @@ import UIKit
 extension UIView {
     
     func fill(in superview: UIView) {
-        superview.addSubview(self)
         translatesAutoresizingMaskIntoConstraints = false
-        
+        superview.addSubview(self)
         NSLayoutConstraint.activate([
             leadingAnchor.constraint(equalTo: superview.leadingAnchor),
             topAnchor.constraint(equalTo: superview.topAnchor),

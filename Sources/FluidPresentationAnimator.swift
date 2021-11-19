@@ -23,16 +23,16 @@ import UIKit
 
 open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
-    public let presentationAnimator: UIViewPropertyAnimator
+    public let animator: UIViewPropertyAnimator
     
     public override init() {
         let springTimingParameters = UISpringTimingParameters(damping: 1.0, response: 0.3)
-        self.presentationAnimator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
+        self.animator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
         super.init()
     }
     
     open func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return presentationAnimator.duration
+        return animator.duration
     }
     
     open func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
@@ -57,27 +57,37 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
             presentationView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         }
         
+        var indicatorView: DragIndicatorView!
+        if let indicatorStyle = toViewController.dragIndicatorStyle {
+            indicatorView = DragIndicatorView(style: indicatorStyle)
+            indicatorView.translatesAutoresizingMaskIntoConstraints = false
+            presentationView.addSubview(indicatorView)
+            indicatorView.topAnchor.constraint(equalTo: presentationView.topAnchor, constant: indicatorStyle.topInset).isActive = true
+            let indicatorSize = indicatorStyle.indicatorSize
+            indicatorView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor).isActive = true
+            indicatorView.widthAnchor.constraint(equalToConstant: indicatorSize.width).isActive = true
+            indicatorView.heightAnchor.constraint(equalToConstant: indicatorSize.height).isActive = true
+        }
+        indicatorView?.alpha = 0.0
         presentationController.backgroundView.alpha = 0.0
 
         let preferredContentHeight = toViewController.preferredContentSize.height
         let verticalTransform = screenHeight - preferredContentHeight
         
-        presentationAnimator.addAnimations {
+        animator.addAnimations {
             presentationView.transform = CGAffineTransform(translationX: 0, y: verticalTransform)
             presentationController.backgroundView.alpha = 1.0
+            indicatorView?.alpha = 1.0
         }
         
-        presentationAnimator.addCompletion { position in
-            switch position {
-            case .end:
+        animator.addCompletion { position in
+            if position == UIViewAnimatingPosition.end {
                 fromViewController.endAppearanceTransition()
                 let didComplete = !transitionContext.transitionWasCancelled
                 transitionContext.completeTransition(didComplete)
-            default:
-                break
             }
         }
         
-        presentationAnimator.startAnimation()
+        animator.startAnimation()
     }
 }
