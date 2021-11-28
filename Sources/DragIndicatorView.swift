@@ -18,6 +18,8 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
+#if os(iOS)
+
 import UIKit
 
 /// Style of the drag indicator.
@@ -69,3 +71,5 @@ final class DragIndicatorView: UIView {
         fatalError("Use init(style:) inseted.")
     }
 }
+
+#endif

@@ -18,6 +18,7 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
+#if os(iOS)
 
 import UIKit
 
@@ -34,3 +35,5 @@ extension UISpringTimingParameters {
         self.init(mass: 1, stiffness: stiffness, damping: damp, initialVelocity: initialVelocity)
     }
 }
+
+#endif
