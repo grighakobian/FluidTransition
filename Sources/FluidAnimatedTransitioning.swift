@@ -18,6 +18,8 @@
 //    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //    THE SOFTWARE.
 
+#if os(iOS)
+
 import UIKit
 
 
@@ -50,6 +52,8 @@ public protocol FluidAnimatedTransitioning: AnyObject {
 }
 
 
+// MARK: - FluidAnimatedTransitioning defaults
+
 public extension FluidAnimatedTransitioning where Self: UIViewController {
     
     var topOffset: CGFloat {
@@ -72,3 +76,5 @@ public extension FluidAnimatedTransitioning where Self: UIViewController {
         return nil
     }
 }
+
+#endif
