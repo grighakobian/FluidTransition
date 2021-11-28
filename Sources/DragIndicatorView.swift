@@ -47,7 +47,7 @@ public struct DragIndicatorStyle {
 }
 
 /// A view that displays a specified drag indicator style.
-final class DragIndicatorView: UIView {
+public final class DragIndicatorView: UIView {
     
     /// Initializes a new drag indicator view with a defined indicator style.
     /// - Parameter style: The drag indicator style.
@@ -61,7 +61,7 @@ final class DragIndicatorView: UIView {
         self.clipsToBounds = true
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         layer.cornerRadius = frame.height / 2

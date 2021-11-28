@@ -49,6 +49,11 @@ public protocol FluidAnimatedTransitioning: AnyObject {
     
     /// The style of the presented view drag indicator.
     var dragIndicatorStyle: DragIndicatorStyle? { get }
+    
+    /// The timing information for animations that mimics the behavior of a spring.
+    ///
+    /// The default value of the property is UISpringTimingParameters(damping: 1.0, response: 0.3)
+    var springTimingParameters: UISpringTimingParameters { get }
 }
 
 
@@ -74,6 +79,10 @@ public extension FluidAnimatedTransitioning where Self: UIViewController {
     
     var dragIndicatorStyle: DragIndicatorStyle? {
         return nil
+    }
+    
+    var springTimingParameters: UISpringTimingParameters {
+        return UISpringTimingParameters(damping: 1.0, response: 0.3)
     }
 }
 

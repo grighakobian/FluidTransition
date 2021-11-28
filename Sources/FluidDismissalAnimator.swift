@@ -25,11 +25,11 @@ import UIKit
 open class FluidDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     public let animator: UIViewPropertyAnimator
+    public let springTimingParameters: UISpringTimingParameters
     
-    public override init() {
-        let springTimingParameters = UISpringTimingParameters(damping: 1.0, response: 0.3)
+    public init(springTimingParameters: UISpringTimingParameters) {
+        self.springTimingParameters = springTimingParameters
         self.animator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
-        
         super.init()
     }
     
@@ -47,7 +47,8 @@ open class FluidDismissalAnimator: NSObject, UIViewControllerAnimatedTransitioni
         
         toViewController.beginAppearanceTransition(true, animated: true)
         
-        var verticalTransform = UIScreen.main.bounds.size.height
+        let finalFrame = transitionContext.finalFrame(for: toViewController)
+        var verticalTransform = finalFrame.height
         if let dragIndicatorStyle = fromViewController.dragIndicatorStyle {
             if dragIndicatorStyle.topInset.isLess(than: 0.0) {
                 verticalTransform += dragIndicatorStyle.indicatorSize.height
