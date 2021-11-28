@@ -24,12 +24,21 @@ import UIKit
 
 open class FluidPresentationController: UIPresentationController {
     
-    private(set) var backgroundView: BackgroundView!
-    private(set) var panGestureRecognizer = UIPanGestureRecognizer()
-    private(set) var tapGestureRecognizer = UITapGestureRecognizer()
+    public let backgroundView: BackgroundView
+    public let fluidViewController: FluidViewController
+    public let panGestureRecognizer: UIPanGestureRecognizer
+    public let tapGestureRecognizer: UITapGestureRecognizer
         
-    open var fluidViewController: FluidViewController {
-        return presentedViewController as! FluidViewController
+    public init(presentedViewController: FluidViewController, presenting presentingViewController: UIViewController?) {
+        self.fluidViewController = presentedViewController
+        
+        let backgroundStyle = fluidViewController.backgroundStyle
+        self.backgroundView = BackgroundView(style: backgroundStyle)
+        
+        self.panGestureRecognizer = UIPanGestureRecognizer()
+        self.tapGestureRecognizer = UITapGestureRecognizer()
+        
+        super.init(presentedViewController: presentedViewController, presenting: presentingViewController)
     }
     
     open override func presentationTransitionWillBegin() {
@@ -39,8 +48,6 @@ open class FluidPresentationController: UIPresentationController {
         
         /// Configure background view
         containerView.backgroundColor = .clear
-        let backgroundStyle = fluidViewController.backgroundStyle
-        self.backgroundView = BackgroundView(style: backgroundStyle)
         backgroundView.fill(in: containerView)
         
         /// Add a pan gesture recognizer for interactive transition
@@ -50,7 +57,6 @@ open class FluidPresentationController: UIPresentationController {
         
         /// Add a tap gesture recognizer for top to dismiss
         tapGestureRecognizer.addTarget(self, action: #selector(tapped(_:)))
-        tapGestureRecognizer.cancelsTouchesInView = false
         containerView.addGestureRecognizer(tapGestureRecognizer)
     }
     
@@ -99,11 +105,11 @@ open class FluidPresentationController: UIPresentationController {
             backgroundView.alpha = alpha
             
         case .ended, .cancelled:
+            let springTimingParameters = fluidViewController.springTimingParameters
+            let animator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
             
             let velocity = recognizer.velocity(in: containerView)
             let shouldDismiss = (velocity.y > 0)
-            let springTimingParameters = UISpringTimingParameters(damping: 1.0, response: 0.3)
-            let animator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
             
             animator.addAnimations {
                 presentedView.isUserInteractionEnabled = !shouldDismiss

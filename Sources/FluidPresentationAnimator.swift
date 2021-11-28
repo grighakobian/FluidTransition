@@ -25,9 +25,10 @@ import UIKit
 open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransitioning {
     
     public let animator: UIViewPropertyAnimator
+    public let springTimingParameters: UISpringTimingParameters
     
-    public override init() {
-        let springTimingParameters = UISpringTimingParameters(damping: 1.0, response: 0.3)
+    public init(springTimingParameters: UISpringTimingParameters) {
+        self.springTimingParameters = springTimingParameters
         self.animator = UIViewPropertyAnimator(duration: 0.0, timingParameters: springTimingParameters)
         super.init()
     }
@@ -47,9 +48,8 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         fromViewController.beginAppearanceTransition(false, animated: true)
         
         let containerView = transitionContext.containerView
-        
-        let screenHeight = UIScreen.main.bounds.size.height
-        presentationView.transform = CGAffineTransform(translationX: 0, y: screenHeight)
+        let initialFrame = transitionContext.initialFrame(for: fromViewController)
+        presentationView.transform = CGAffineTransform(translationX: 0, y: initialFrame.height)
  
         containerView.addSubview(presentationView)
         
@@ -73,7 +73,7 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         presentationController.backgroundView.alpha = 0.0
 
         let preferredContentHeight = toViewController.preferredContentSize.height
-        let verticalTransform = screenHeight - preferredContentHeight
+        let verticalTransform = initialFrame.height - preferredContentHeight
         
         animator.addAnimations {
             presentationView.transform = CGAffineTransform(translationX: 0, y: verticalTransform)

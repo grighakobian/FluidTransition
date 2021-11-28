@@ -26,16 +26,19 @@ extension UIViewController: UIViewControllerTransitioningDelegate {
 
     public func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if presented is FluidAnimatedTransitioning {
-            return FluidPresentationAnimator()
+        if let fluidViewController = presented as? FluidViewController {
+            let springTimingParameters = fluidViewController.springTimingParameters
+            return FluidPresentationAnimator(springTimingParameters: springTimingParameters)
         }
+        
         return nil
     }
     
     public func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        if dismissed is FluidAnimatedTransitioning {
-            return FluidDismissalAnimator()
+        if let fluidViewController = dismissed as? FluidViewController {
+            let springTimingParameters = fluidViewController.springTimingParameters
+            return FluidDismissalAnimator(springTimingParameters: springTimingParameters)
         }
         
         return nil
@@ -43,8 +46,8 @@ extension UIViewController: UIViewControllerTransitioningDelegate {
     
     public func presentationController(forPresented presented: UIViewController, presenting: UIViewController?, source: UIViewController) -> UIPresentationController? {
         
-        if presented is FluidAnimatedTransitioning {
-            return FluidPresentationController(presentedViewController: presented, presenting: presenting)
+        if let fluidViewController = presented as? FluidViewController {
+            return FluidPresentationController(presentedViewController: fluidViewController, presenting: presenting)
         }
         
         return nil

@@ -33,7 +33,7 @@ public enum BackgroundStyle {
 
 
 /// A view that displays a specified background style.
-final class BackgroundView: UIView {
+public final class BackgroundView: UIView {
     
     /// Initializes a new background view with a defined background style
     /// - Parameter style: The background style
