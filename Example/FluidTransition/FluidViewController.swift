@@ -50,21 +50,11 @@ extension FluidViewController: FluidAnimatedTransitioning {
     }
     
     var dragIndicatorStyle: DragIndicatorStyle? {
-        if #available(iOS 13.0, *) {
-            return DragIndicatorStyle(
-                backgroundStyle: .blur(style: .systemMaterial),
-                topInset: -16,
-                indicatorSize: CGSize(width: 50, height: 6),
-                cornerRadius: 3
-            )
-        } else {
-            return DragIndicatorStyle(
-                backgroundStyle: .blur(style: .extraLight),
-                topInset: -16,
-                indicatorSize: CGSize(width: 50, height: 6),
-                cornerRadius: 3
-            )
-        }
+        return DragIndicatorStyle(
+            indicatorSize: CGSize(width: 50, height: 6),
+            topInset: 16,
+            backgroundStyle: .solid(color: .white)
+        )
     }
 }
 
