@@ -48,10 +48,14 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         fromViewController.beginAppearanceTransition(false, animated: true)
         
         let containerView = transitionContext.containerView
-        let initialFrame = transitionContext.initialFrame(for: fromViewController)
+        var initialFrame = transitionContext.initialFrame(for: fromViewController)
+        let preferredContentSize = toViewController.preferredContentSize
+        initialFrame.size.width = preferredContentSize.width
         presentationView.transform = CGAffineTransform(translationX: 0, y: initialFrame.height)
  
         containerView.addSubview(presentationView)
+        presentationView.frame = initialFrame
+        presentationView.center = containerView.center
         
         if let cornerRadius = toViewController.cornerRadius {
             presentationView.layer.cornerRadius = cornerRadius
@@ -72,8 +76,7 @@ open class FluidPresentationAnimator: NSObject, UIViewControllerAnimatedTransiti
         indicatorView?.alpha = 0.0
         presentationController.backgroundView.alpha = 0.0
 
-        let preferredContentHeight = toViewController.preferredContentSize.height
-        let verticalTransform = initialFrame.height - preferredContentHeight
+        let verticalTransform = initialFrame.height - preferredContentSize.height
         
         animator.addAnimations {
             presentationView.transform = CGAffineTransform(translationX: 0, y: verticalTransform)

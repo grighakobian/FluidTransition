@@ -60,6 +60,24 @@ open class FluidPresentationController: UIPresentationController {
         containerView.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    open override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: { [unowned self] coordinatorContext in
+            let containerView = coordinatorContext.containerView
+            let containerHeight = containerView.bounds.height
+            let preferredContentHeight = fluidViewController.preferredContentSize.height
+            var verticalTransform = containerHeight - preferredContentHeight
+            if let dragIndicatorStyle = fluidViewController.dragIndicatorStyle {
+                if dragIndicatorStyle.topInset.isLess(than: 0.0) {
+                    verticalTransform += dragIndicatorStyle.indicatorSize.height
+                    verticalTransform += abs(dragIndicatorStyle.topInset)
+                }
+            }
+            let transform = CGAffineTransform(translationX: 0, y: verticalTransform)
+            self.containerView?.frame = containerView.bounds
+            self.presentedView?.transform = transform
+        })
+    }
+    
     @objc open func tapped(_ sender: UITapGestureRecognizer) {
         guard fluidViewController.dismissOnBackgroundTap else {
             return
